@@ -2,6 +2,8 @@
 from sklearn.model_selection import train_test_split
 from utilities.dataset import *
 
+'This script is used to save images of outfits in directories'
+
 new_root_dir = f'{root_dir}polyvore_outfits/images'
 
 # load dataset reading the saved file
@@ -11,19 +13,19 @@ real_outfit = pd.read_csv(f'{root_dir}my_data/real_outfit.csv')
 train_outfit, test_outfit = train_test_split(real_outfit, test_size=0.2, random_state=42)
 train_outfit, val_outfit = train_test_split(train_outfit, test_size=0.125, random_state=42)
 
-# split train DataFrame in lists (train: tops, bottoms, shoes, accessories) and cast element to string
+# split train DataFrame in lists (train: tops, bottoms, shoes, accessories) and cast elements to string
 train_tops = cast(cast(list(train_outfit['tops']), int), str)
 train_bottoms = cast(cast(list(train_outfit['bottoms']), int), str)
 train_shoes = cast(cast(list(train_outfit['shoes']), int), str)
 train_accessories = cast(cast(list(train_outfit['accessories']), int), str)
 
-# split validation DataFrame in lists (validation: tops, bottoms, shoes, accessories) and cast element to string
+# split validation DataFrame in lists (validation: tops, bottoms, shoes, accessories) and cast elements to string
 val_tops = cast(cast(list(val_outfit['tops']), int), str)
 val_bottoms = cast(cast(list(val_outfit['bottoms']), int), str)
 val_shoes = cast(cast(list(val_outfit['shoes']), int), str)
 val_accessories = cast(cast(list(val_outfit['accessories']), int), str)
 
-# split test DataFrame in lists (test: tops, bottoms, shoes, accessories) and cast element to string
+# split test DataFrame in lists (test: tops, bottoms, shoes, accessories) and cast elements to string
 test_tops = cast(cast(list(test_outfit['tops']), int), str)
 test_bottoms = cast(cast(list(test_outfit['bottoms']), int), str)
 test_shoes = cast(cast(list(test_outfit['shoes']), int), str)

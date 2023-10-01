@@ -21,7 +21,7 @@ if device != 'cuda':
 # load images from test dataset ...
 test_outfit = f'{root_dir}outfits/test'
 test_loader = ImageFolder(test_outfit, transform=test_transform)
-# ... and organize them in 4 different DataLoaders: iter_tops, iter_bottoms, iter_shoes, iter_accessories
+# ... and organize them in 4 different DataLoaders: iterTe_tops, iterTe_bottoms, iterTe_shoes, iterTe_accessories
 iterTe_tops, iterTe_bottoms, iterTe_shoes, iterTe_accessories = DataLoad(test_loader)
 
 

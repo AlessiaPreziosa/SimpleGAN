@@ -25,13 +25,13 @@ torch.manual_seed(SEED)
 # load images from train dataset ...
 train_outfit = f'{root_dir}outfits/train'
 train_loader = ImageFolder(train_outfit, transform=train_transform)
-# ... and organize them in 4 different DataLoaders: iter_tops, iter_bottoms, iter_shoes, iter_accessories
+# ... and organize them in 4 different DataLoaders: iterT_tops, iterT_bottoms, iterT_shoes, iterT_accessories
 iterT_tops, iterT_bottoms, iterT_shoes, iterT_accessories = DataLoad(train_loader)
 
 # load images from validation dataset ...
 valid_outfit = f'{root_dir}outfits/val'
 valid_loader = ImageFolder(valid_outfit, transform=test_transform)
-# ... and organize them in 4 different DataLoaders: iter_tops, iter_bottoms, iter_shoes, iter_accessories
+# ... and organize them in 4 different DataLoaders: iterV_tops, iterV_bottoms, iterV_shoes, iterV_accessories
 iterV_tops, iterV_bottoms, iterV_shoes, iterV_accessories = DataLoad(valid_loader)
 
 # show some sample images
@@ -63,7 +63,7 @@ def objective_accessories(hyperparams):
 
     gan_accessories = SimpleGAN(device, 'accessories', generatorA, discriminatorA, optimizerGA, optimizerDA,
                                 lmd=hyperparams['lmd'])
-    (_, gvl, _, dvl, fid_scores) = gan_accessories.fit(200, iterT_tops, iterT_accessories, iterV_tops, iterV_accessories)
+    (gtl, gvl, dtl, dvl, fid_scores) = gan_accessories.fit(200, iterT_tops, iterT_accessories, iterV_tops, iterV_accessories)
     loss = np.mean(np.array(gvl)) + np.mean(np.array(dvl)) + np.mean(np.array(fid_scores))
     return {'loss': loss, 'model': gan_accessories, 'hyper': hyperparams, 'status': STATUS_OK}
 
@@ -84,7 +84,7 @@ def objective_bottoms(hyperparams):
 
     gan_bottoms = SimpleGAN(device, 'bottoms', generatorB, discriminatorB, optimizerGB, optimizerDB,
                             lmd=hyperparams['lmd'])
-    (_, gvl, _, dvl, fid_scores) = gan_bottoms.fit(200, iterT_tops, iterT_bottoms, iterV_tops, iterV_bottoms)
+    (gtl, gvl, dtl, dvl, fid_scores) = gan_bottoms.fit(200, iterT_tops, iterT_bottoms, iterV_tops, iterV_bottoms)
     loss = np.mean(np.array(gvl)) + np.mean(np.array(dvl)) + np.mean(np.array(fid_scores))
     return {'loss': loss, 'model': gan_bottoms, 'hyper': hyperparams, 'status': STATUS_OK}
 
@@ -103,7 +103,7 @@ def objective_shoes(hyperparams):
     generatorS, discriminatorS, optimizerGS, optimizerDS = initialize(hyperparams)
 
     gan_shoes = SimpleGAN(device, 'shoes', generatorS, discriminatorS, optimizerGS, optimizerDS, lmd=hyperparams['lmd'])
-    (_, gvl, _, dvl, fid_scores) = gan_shoes.fit(200, iterT_tops, iterT_shoes, iterV_tops, iterV_shoes)
+    (gtl, gvl, dtl, dvl, fid_scores) = gan_shoes.fit(200, iterT_tops, iterT_shoes, iterV_tops, iterV_shoes)
     loss = np.mean(np.array(gvl)) + np.mean(np.array(dvl)) + np.mean(np.array(fid_scores))
     return {'loss': loss, 'model': gan_shoes, 'hyper': hyperparams, 'status': STATUS_OK}
 

@@ -8,7 +8,7 @@ class Discriminator(nn.Module):
     def __init__(self):
 
         """
-        This class creates the discriminator of the network: PatchGAN, it uses only a patch of the image
+        This class creates the discriminator of the network, it uses only a patch of the image
         to discriminate if it is real or fake.
         It is faster and motivates the discriminator to work in a high-frequency structure
         """

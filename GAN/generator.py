@@ -7,7 +7,7 @@ class Generator(nn.Module):
     def __init__(self):
 
         """
-        This class creates the generator of the network (sort of U-Net),
+        This class creates the generator of the network (U-Net),
         starting from the Encoder and Decoder blocks
         """
 

@@ -1,5 +1,9 @@
 from utilities.dataset import *
 
+'This script is used to filter outfits that present a top, a bottom, a pair of shoes and at least an accessory.'
+'2 csv are created: the first containing the filtered clothes, the second containing the filtered outfits.'
+'The second one will be used to split the dataset'
+
 # returns JSON object as a dictionary
 dataset = json.load(open(f'{root_dir}polyvore_outfits/polyvore_item_metadata.json'))  # 251008 clothes
 
@@ -13,7 +17,7 @@ df = pd.DataFrame([[key, dataset[key]['semantic_category']] for key in dataset.k
 path = f'{root_dir}my_data/df.csv'
 df.to_csv(path, index=False)
 
-# divide items_id of tops, bottoms, shoes and accessories
+# divide ids of tops, bottoms, shoes and accessories
 ids = list(df['ID'])
 tops = [ids[i] for i in range(len(df)) if df.iloc[i]['Semantic Category'] == 'tops']   # 32998
 bottoms = [ids[i] for i in range(len(df)) if df.iloc[i]['Semantic Category'] == 'bottoms']   # 27670

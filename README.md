@@ -2,7 +2,7 @@
 The objective of this Deep Learning project will be to develop a Generative Adversarial Network (GAN) model to accomplish the outfit generation task in the fashion domain. The primary objective is to generate a set of three images: bottoms (trousers/skirt), shoes, and accessories, given an input image of a top (shirt/t-shirt).
 
 ## HOW TO
-1. Make sure requirements from *requirements.txt* are installed: try **pip install -r requirements.txt** if download is not automatic 
+1. Make sure packages from *requirements.txt* are installed: try **pip install -r requirements.txt** if download is not automatic 
 2. Download the Polyvore Dataset from https://drive.google.com/file/d/13-J4fAPZahauaGycw3j_YvbAHO7tOTW5/view
 3. Change the variable *root_dir* in *utilities/dataset.py* so that it points to the directory where the Polyvore Outfit Dataset is (e.g.: /Users/alessiapreziosa/Downloads/)
 4. Create the directory *my_data* in *root_dir*

@@ -5,9 +5,8 @@ from utilities.architecture import *
 
 class SimpleGAN:
     """
-    This class creates the GAN network for each pair of clothes in the outfit.
-
-    :param device: device on which the network will be trained and tested
+    This class creates the GAN network for each pair (tops-bottoms; tops-shoes; tops-accessories)
+    of clothes in the outfit.
     """
 
     def __init__(self, device, item, generator, discriminator, optimizerG, optimizerD, lmd):

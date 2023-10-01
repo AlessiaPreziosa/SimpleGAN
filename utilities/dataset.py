@@ -42,8 +42,8 @@ def save(clothes, new_root_dir, dataset, capo):
 # augment train data
 train_transform = transforms.Compose([
     transforms.Resize(128),  # resize to 128x128
-    transforms.RandomHorizontalFlip(),  # add a random flip
-    transforms.RandomVerticalFlip(),  # add a random flip
+    transforms.RandomHorizontalFlip(),  # add a random H flip
+    transforms.RandomVerticalFlip(),  # add a random V flip
     transforms.ToTensor(),  # transform to a Float tensor
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))  # normalize
 ])
